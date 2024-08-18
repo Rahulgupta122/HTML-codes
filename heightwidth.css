@@ -1,0 +1,25 @@
+.container{
+    height: 330px;
+    width: 334px;
+    background: rgb(82, 69, 69) ;
+    padding: 30px 20px 10px 5px;
+    margin: 20px 10px 5px 3px;  
+    /* text-align: top right; */
+   color: aliceblue;
+   border: 7px  palevioletred;
+   /* border-style: dotted;
+   border-style: none;
+border-style: hidden;
+/* border-style: dotted;
+border-style: dashed;
+border-style: solid;
+border-style: double;
+border-style: groove; */ 
+/* border-style: ridge; */
+/* border-style: inset; */
+/* border-style: outset; */
+/* border-style: dotted solid; */
+/* border-style: none solid dotted dashed; */
+border-style: solid;
+border-radius: 7px;
+}
