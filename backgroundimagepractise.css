@@ -1,0 +1,9 @@
+.image{
+    width: 444px;
+    height: 444px;
+    background-image: url('panda1.png');
+    background-repeat: no-repeat;
+    background-color: aqua;
+    background-size: 442px 442px;
+    background-position: top right;
+}
