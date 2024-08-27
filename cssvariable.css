@@ -1,0 +1,14 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+:root{
+    --color:rgb(220, 32, 148);
+    --seccolor:rgb(226, 208, 9);
+}
+.class{
+    background-color: var(--color);
+}
+.class1{
+    background-color: var(--seccolor);
+}
