@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode and Light Mode</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode-btn {
+      background-color: black;
+      color: white;
+    }
+    .dark-mode-btn:hover {
+      background-color: #333;
+    }
+    .light-mode-btn {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+    .light-mode-btn:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="dark-mode-btn" onclick="setDarkMode()">Dark Mode</button>
+    <button class="light-mode-btn" onclick="setLightMode()">Light Mode</button>
+  </div>
+
+  <script>
+    function setDarkMode() {
+      document.body.style.backgroundColor = "black";
+      document.body.style.color = "white";
+    }
+
+    function setLightMode() {
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+    }
+  </script>
+</body>
+</html>

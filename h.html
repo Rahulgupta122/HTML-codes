@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input and Display with Latest Feature</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .output {
+      margin-top: 20px;
+    }
+    .output table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    .output th, .output td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    .output th {
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Enter your name">
+    </div>
+    <div class="form-group">
+      <label for="url">URL:</label>
+      <input type="url" id="url" placeholder="Enter a URL">
+    </div>
+    <button onclick="handleSubmit()">Submit</button>
+    <button onclick="showLatest()">Latest</button>
+    
+    <div class="output">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>URL</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody id="outputTable">
+          <!-- Rows will be dynamically added here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    let entries = [];
+
+    function handleSubmit() {
+      const name = document.getElementById('name').value;
+      const url = document.getElementById('url').value;
+      const timestamp = new Date().toLocaleString();
+
+      if (!name || !url) {
+        alert("Please fill out both fields.");
+        return;
+      }
+
+      const newEntry = { name, url, timestamp };
+      entries.push(newEntry);
+      addEntryToTable(newEntry);
+
+      // Clear the input fields
+      document.getElementById('name').value = '';
+      document.getElementById('url').value = '';
+    }
+
+    function addEntryToTable(entry) {
+      const table = document.getElementById('outputTable');
+      const newRow = document.createElement('tr');
+
+      newRow.innerHTML = `
+        <td>${entry.name}</td>
+        <td><a href="${entry.url}" target="_blank">${entry.url}</a></td>
+        <td>${entry.timestamp}</td>
+      `;
+
+      table.appendChild(newRow);
+    }
+
+    function showLatest() {
+      if (entries.length === 0) {
+        alert("No entries available.");
+        return;
+      }
+
+      const latestEntries = entries.slice(-3).reverse(); // Get the last 3 entries in reverse order
+      const table = document.getElementById('outputTable');
+
+      // Remove all existing rows
+      while (table.firstChild) {
+        table.removeChild(table.firstChild);
+      }
+
+      // Add the latest 3 entries to the top
+      latestEntries.forEach(addEntryToTable);
+
+      // Add the remaining entries below
+      const remainingEntries = entries.slice(0, -3);
+      remainingEntries.forEach(addEntryToTable);
+    }
+  </script>
+</body>
+</html>
